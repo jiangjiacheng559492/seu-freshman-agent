@@ -4,7 +4,13 @@
 
 项目以学院新生指南为知识来源，使用意图识别、向量检索、关键词匹配和大语言模型生成回答，并提供基于 Streamlit 的网页聊天界面。
 
-本项目主要用于学习和展示特化 Agent 的完整开发流程，包括知识库整理、RAG 检索、意图路由、提示词设计、自动化评测和客户端开发。
+本项目主要用于学习和展示特化 Agent 的完整开发流程，包括知识库整理、RAG 检索、意图路由、提示词设计、自动化评测、客户端开发和云端部署。
+
+## 在线体验
+
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://seu-freshman-agent.streamlit.app/)
+
+在线访问：[东南大学新生指南问答 Agent](https://seu-freshman-agent.streamlit.app/)
 
 ## 主要功能
 
@@ -18,6 +24,7 @@
 - Streamlit 网页聊天界面
 - 开发集与保留测试集评测
 - 端到端质量和内部组件分层评分
+- Streamlit Community Cloud 在线部署
 
 ## 工作流程
 
@@ -49,6 +56,8 @@ Streamlit 聊天界面展示
 - DashScope 文本向量模型
 - 本地 JSON 向量索引
 - JSONL 自动化评测集
+- Git 与 GitHub
+- Streamlit Community Cloud
 
 ## 项目结构
 
@@ -91,10 +100,11 @@ seu-freshman-agent/
 
 ## 本地运行
 
-### 1. 进入项目目录
+### 1. 克隆项目
 
 ```powershell
-cd "C:\path\to\seu-freshman-agent"
+git clone https://github.com/jiangjiacheng559492/seu-freshman-agent.git
+cd seu-freshman-agent
 ```
 
 ### 2. 创建虚拟环境
@@ -231,6 +241,34 @@ results/reports/
 - 对知识库之外的问题谨慎回答
 - 对无法由资料确认的信息明确说明
 - 使用 `.gitignore` 排除密钥和本地评测结果
+- 使用 Streamlit Secrets 保存云端 API Key
+- 限制单次会话的提问数量和请求频率
+
+## 云端部署
+
+项目当前部署在 Streamlit Community Cloud：
+
+```text
+https://seu-freshman-agent.streamlit.app/
+```
+
+云端部署使用以下配置：
+
+```text
+Repository: jiangjiacheng559492/seu-freshman-agent
+Branch: main
+Main file path: app.py
+```
+
+云端 API Key 通过 Streamlit Secrets 配置，不写入代码或 GitHub 仓库。
+
+Secrets 使用 TOML 格式：
+
+```toml
+DASHSCOPE_API_KEY = "自己的百炼API_Key"
+DASHSCOPE_MODEL = "qwen3.8-flash"
+DASHSCOPE_BASE_URL = "https://dashscope.aliyuncs.com/compatible-mode/v1"
+```
 
 ## 当前状态
 
@@ -246,6 +284,8 @@ results/reports/
 - 分层评分
 - Streamlit 聊天客户端
 - 基本安全测试
+- GitHub 代码托管
+- Streamlit Community Cloud 公开部署
 
 ## 后续计划
 
@@ -255,8 +295,10 @@ results/reports/
 - 增加知识库更新时间显示
 - 增加用户反馈功能
 - 增加请求日志和错误监控
-- 部署公开体验版本
+- 增加全局调用额度限制
 - 增加自动化测试和持续集成
+- 优化移动端页面显示
+- 收集真实用户反馈并继续迭代
 
 ## 项目说明
 
