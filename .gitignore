@@ -1,0 +1,31 @@
+# 真实密钥
+.env
+.env.*
+!.env.example
+
+# Streamlit 本地密钥
+.streamlit/secrets.toml
+
+# Python 虚拟环境
+.venv/
+venv/
+
+# Python 缓存
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# 本地评测输出
+results/
+
+# 不公开的保留测试集和历史备份
+evals/holdout.jsonl
+evals/*before*.jsonl
+evals/*frozen*.jsonl
+
+# 日志
+*.log
+
+# 操作系统文件
+.DS_Store
+Thumbs.db
